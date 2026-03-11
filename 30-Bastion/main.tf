@@ -4,6 +4,11 @@ resource "aws_instance" "bastionEC2"{
     subnet_id = local.Public_subnet_ids
     vpc_security_group_ids = [local.bastion_sg_id]
     iam_instance_profile = aws_iam_instance_profile.bastion_profile.name 
+    user_data = file("bastion.sh")
+
+  root_block_device {
+    volume_size = 50
+    volume_type = "gp3"
     tags = merge (
         local.common_tags,
         {
