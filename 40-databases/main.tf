@@ -116,7 +116,7 @@ resource "terraform_data" "mysql" {
 resource "aws_instance" "rabbitmq" {
   ami           = data.aws_ami.RetreiveInstanceID.id
   instance_type = "t3.micro"
-  subnet_id = local.database_subnet_id
+  subnet_id = local.database_subnet_ids
   vpc_security_group_ids = [local.rabbitmq_sg_id]
 
   tags = merge(
