@@ -11,7 +11,7 @@ resource "aws_instance" "MongoDBEC2"{
         }
         )    
 }
-resource "terraform_data" "bootstrap"{
+resource "terraform_data" "bootstrap_mongodb"{
 
     triggers_replace = [aws_instance.MongoDBEC2.id]
 
@@ -49,7 +49,7 @@ resource "aws_instance" "RedisEC2"{
         }
         )    
 }
-resource "terraform_data" "bootstrap"{
+resource "terraform_data" "bootstrap_redis"{
 
     triggers_replace = [aws_instance.RedisEC2.id]
 
