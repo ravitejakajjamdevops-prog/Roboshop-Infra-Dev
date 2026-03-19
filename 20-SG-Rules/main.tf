@@ -101,16 +101,6 @@ resource "aws_security_group_rule" "rabbitmq_payment" {
   security_group_id = local.rabbitmq_sg_id
 }
 
-# Catalogue
-resource "aws_security_group_rule" "catalogue_bastion" {
-  type              = "ingress"
-  from_port         = 22
-  to_port           = 22
-  protocol          = "tcp"
-  # Where traffic is coming from
-  source_security_group_id = local.bastion_sg_id
-  security_group_id = local.catalogue_sg_id
-}
 
 #Backend-alb accepting connection from bastion
 
@@ -123,4 +113,26 @@ resource "aws_security_group_rule" "Backend-alb_bastion" {
   source_security_group_id = local.bastion_sg_id
   security_group_id = local.backend-alb_sg_id
 }
+#Catalogue accepting connection from bastion
+resource "aws_security_group_rule" "Catalogue_bastion" {
+  type              = "ingress"
+  from_port         = 22
+  to_port           = 22
+  protocol          = "tcp"
+  # Where traffic is coming from
+  source_security_group_id = local.bastion_sg_id
+  security_group_id = local.catalogue_sg_id
+}
+#Catalogue accepting connection from backend-alb
+resource "aws_security_group_rule" "Catalogue_backend-alb" {
+  type              = "ingress"
+  from_port         = 8080
+  to_port           = 8080
+  protocol          = "tcp"
+  # Where traffic is coming from
+  source_security_group_id = local.backend-alb_sg_id
+  security_group_id = local.catalogue_sg_id
+}
+
+
 
