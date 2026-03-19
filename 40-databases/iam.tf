@@ -41,4 +41,7 @@ resource "aws_iam_role_policy_attachment" "mysql" {
 resource "aws_iam_instance_profile" "mysql" {
   name = "${var.project}-${var.environment}-mysql"
   role = aws_iam_role.mysql.name
+  depends_on = [
+    aws_iam_role_policy_attachment.mysql
+  ]
 }
