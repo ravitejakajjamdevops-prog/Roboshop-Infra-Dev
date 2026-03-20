@@ -94,7 +94,7 @@ resource "aws_autoscaling_group" "main" {
   desired_capacity          = 1
   force_delete              = true
   launch_template {
-    id      = aws_launch_template.catalogue.id
+    id      = aws_launch_template.main.id
     version = "$Latest"
   }
   vpc_zone_identifier       = [local.Private_subnet_id]
