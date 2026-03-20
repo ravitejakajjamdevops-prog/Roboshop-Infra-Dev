@@ -93,7 +93,10 @@ resource "aws_autoscaling_group" "main" {
   health_check_type         = "ELB"
   desired_capacity          = 1
   force_delete              = true
-  launch_template           = aws_launch_template.main.id
+  launch_template {
+    id      = aws_launch_template.catalogue.id
+    version = "$Latest"
+  }
   vpc_zone_identifier       = [local.Private_subnet_id]
 
   target_group_arn = aws_lb_target_group.main.arn
