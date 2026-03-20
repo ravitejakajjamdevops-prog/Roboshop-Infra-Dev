@@ -99,7 +99,7 @@ resource "aws_autoscaling_group" "main" {
   }
   vpc_zone_identifier       = [local.Private_subnet_id]
 
-  target_group_arn = aws_lb_target_group.main.arn
+  target_group_arn = [aws_lb_target_group.main.arn]
 
   instance_refresh{
 
