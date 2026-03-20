@@ -118,8 +118,7 @@ resource "aws_autoscaling_group" "main" {
     delete = "15m"
   }
 }
-Copy
-With Latest Version Of Launch Template
+
 resource "aws_launch_template" "foobar" {
   name_prefix   = "foobar"
   image_id      = "ami-1a2b3c"
