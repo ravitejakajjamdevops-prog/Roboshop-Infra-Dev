@@ -13,4 +13,5 @@ locals {
   payment_sg_id = data.aws_ssm_parameter.payment_sg_id.value
   backend-alb_sg_id = data.aws_ssm_parameter.backend-alb_sg_id.value
   frontend-alb_sg_id = data.aws_ssm_parameter.frontend-alb_sg_id.value
+  frontend_sg_id = data.aws_ssm_parameter.frontend_sg_id.value
 }
