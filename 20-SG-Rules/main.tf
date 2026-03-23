@@ -133,6 +133,15 @@ resource "aws_security_group_rule" "Catalogue_backend-alb" {
   source_security_group_id = local.backend-alb_sg_id
   security_group_id = local.catalogue_sg_id
 }
+resource "aws_security_group_rule" "frontend-alb_user" {
+  type              = "ingress"
+  from_port         = 443
+  to_port           = 443
+  protocol          = "tcp"
+  # Where traffic is coming from
+  cidr_blocks = ["0.0.0.0/0"]
+  security_group_id = local.frontend-alb_sg_id
+}
 
 
 
