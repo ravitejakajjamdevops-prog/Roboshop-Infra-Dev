@@ -6,6 +6,7 @@ resource "aws_route53_record" "mongodb" {
   records = [aws_instance.MongoDBEC2.private_ip]
   allow_overwrite = true
 }
+
 resource "aws_route53_record" "redis" {
   zone_id = var.zone_id
   name    = "redis-${var.environment}.${var.domain_name}"
@@ -14,6 +15,7 @@ resource "aws_route53_record" "redis" {
   records = [aws_instance.RedisEC2.private_ip]
   allow_overwrite = true
 }
+
 resource "aws_route53_record" "mysql" {
   zone_id = var.zone_id
   name    = "mysql-${var.environment}.${var.domain_name}"

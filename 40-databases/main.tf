@@ -73,6 +73,7 @@ resource "terraform_data" "bootstrap_redis"{
     ]
  }
 }
+
 resource "aws_instance" "mysql" {
   ami           = data.aws_ami.RetreiveInstanceID.id
   instance_type = "t3.micro"
